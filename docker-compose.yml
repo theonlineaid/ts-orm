@@ -10,14 +10,31 @@ services:
       - .:/usr/src/app  # Mount the current directory to enable live reloading in development
     environment:
       NODE_ENV: development  # Set environment variables if needed
+      DATABASE_URL: mysql://root:12345678@mysql:3306/product?schema=public  # Update to match your setup
 
-  # Uncomment this section if you need a production service
-  # app_prod:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #     target: production
-  #   ports:
-  #     - "5000:5000"
-  #   environment:
-  #     NODE_ENV: production
+  mysql:
+    image: mysql:8.0  # You can specify a different version if needed
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678  # Set your root password (must match your DATABASE_URL)
+      MYSQL_DATABASE: product          # Create a default database (must match your DATABASE_URL)
+      MYSQL_USER: user                 # Create a new user if needed
+      MYSQL_PASSWORD: password          # Password for the new user (not used in your DATABASE_URL)
+    ports:
+      - "3305:3306"  # Expose MySQL port
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persist data
+
+# Uncomment this section if you need a production service
+# app_prod:
+#   build:
+#     context: .
+#     dockerfile: Dockerfile
+#     target: production
+#   ports:
+#     - "5000:5000"
+#   environment:
+#     NODE_ENV: production
+
+volumes:
+  mysql_data:
