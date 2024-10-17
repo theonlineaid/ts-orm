@@ -3,12 +3,52 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Product {
+  id                 Int             @id @default(autoincrement())
+  productTitle       String
+  productDescription String
+  productType        String // Can be "new", "used", etc.
+  price              Float
+  productRating      Float? // Can be between 0 and 5
+  productQuantity    Int // Can be negative if the product is out of stock
+  stockQuantity      Int
+  allowCampaign      Boolean
+  isTrending         Boolean
+  productShortVideo  String? // URL or link to the short video
+  productsImages     ProductImage[] // Relation to ProductImage model
+  productModels      ProductModel[]  // Relation to ProductModel
+  specifications     Specification[]  // Relation to Specification model
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+}
+
+model ProductImage {
+  id         Int     @id @default(autoincrement())
+  productId  Int
+  imageUrl   String  // URL or file path for the product image
+  product    Product @relation(fields: [productId], references: [id])
+}
+
+model ProductModel {
+  id         Int     @id @default(autoincrement())
+  productId  Int
+  modelImage String  // URL or file path for the model image
+  product    Product @relation(fields: [productId], references: [id])
+}
+
+model Specification {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  brand     String
+  value     String // Can store various specification values
+  product   Product @relation(fields: [productId], references: [id])
 }
