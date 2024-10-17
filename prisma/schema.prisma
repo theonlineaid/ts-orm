@@ -1,10 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x", "linux-musl", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -30,23 +26,23 @@ model Product {
   isTrending         Boolean
   productShortVideo  String? // URL or link to the short video
   productsImages     ProductImage[] // Relation to ProductImage model
-  productModels      ProductModel[]  // Relation to ProductModel
-  specifications     Specification[]  // Relation to Specification model
+  productModels      ProductModel[] // Relation to ProductModel
+  specifications     Specification[] // Relation to Specification model
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
 }
 
 model ProductImage {
-  id         Int     @id @default(autoincrement())
-  productId  Int
-  imageUrl   String  // URL or file path for the product image
-  product    Product @relation(fields: [productId], references: [id])
+  id        Int     @id @default(autoincrement())
+  productId Int
+  imageUrl  String // URL or file path for the product image
+  product   Product @relation(fields: [productId], references: [id])
 }
 
 model ProductModel {
   id         Int     @id @default(autoincrement())
   productId  Int
-  modelImage String  // URL or file path for the model image
+  modelImage String // URL or file path for the model image
   product    Product @relation(fields: [productId], references: [id])
 }
 
@@ -59,10 +55,10 @@ model Specification {
 }
 
 model User {
-  id                     Int        @id @default(autoincrement())
+  id                     Int       @id @default(autoincrement())
   name                   String
-  email                  String     @unique
-  userName               String?    @unique
+  email                  String    @unique
+  userName               String?   @unique
   password               String
   profileImage           String?
   coverImage             String?
@@ -74,9 +70,9 @@ model User {
   address                String?
   defaultBillingAddress  Int?
   defaultShippingAddress Int?
-  createdAt              DateTime   @default(now())
-  updatedAt              DateTime   @updatedAt
-  role                   Role       @default(SELLER)
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+  role                   Role      @default(SELLER)
   userAgentInfo          Json?
   ipAddress              String?
   location               Json?

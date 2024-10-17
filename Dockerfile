@@ -13,6 +13,9 @@ RUN npm install
 # Copy all files from the current directory to the working directory
 COPY . .
 
+# Generate Prisma client
+RUN npx prisma generate
+
 # Development stage
 FROM builder as development
 # Set NODE_ENV to development

@@ -1,6 +1,6 @@
 # project setup documentation
 
-```
+```bash
 mkdir folder
 cd folder 
 npm init | -y
@@ -21,7 +21,7 @@ npx prisma init
 ## Dependencies setup
 
 ```bash
-npm i morgan cors cookie-parser multer jsonwebtoken dotenv device-detector-js ua-parser-js axios zod nodemailer
+npm i morgan cors cookie-parser multer jsonwebtoken dotenv device-detector-js ua-parser-js axios zod nodemailer bcrypt uuid
 npm i --save-dev @types/cookie-parser
 npm i --save-dev @types/cors
 npm i --save-dev @types/morgan
@@ -29,4 +29,6 @@ npm i --save-dev @types/multer
 npm i --save-dev @types/jsonwebtoken
 npm i --save-dev @types/ua-parser-js
 npm i --save-dev @types/nodemailer
+npm i --save-dev @types/uuid
+npm i --save-dev @types/bcrypt
 ```

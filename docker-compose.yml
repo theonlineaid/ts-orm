@@ -11,6 +11,8 @@ services:
     environment:
       NODE_ENV: development  # Set environment variables if needed
       DATABASE_URL: ${DATABASE_URL}  # Reference the DATABASE_URL from .env
+    depends_on:
+      - mysql
 
   mysql:
     image: mysql:8.0

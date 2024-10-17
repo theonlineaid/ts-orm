@@ -62,4 +62,6 @@ const productCtrl = {
     }
 
 }
+
+
 export default productCtrl;
