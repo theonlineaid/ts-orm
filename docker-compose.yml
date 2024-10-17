@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development  # Change to 'production' for production builds
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/usr/src/app  # Mount the current directory to enable live reloading in development
+    environment:
+      NODE_ENV: development  # Set environment variables if needed
+
+  # Uncomment this section if you need a production service
+  # app_prod:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     target: production
+  #   ports:
+  #     - "5000:5000"
+  #   environment:
+  #     NODE_ENV: production
