@@ -12,6 +12,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  SELLER
+}
+
 model Product {
   id                 Int             @id @default(autoincrement())
   productTitle       String
@@ -51,4 +56,34 @@ model Specification {
   brand     String
   value     String // Can store various specification values
   product   Product @relation(fields: [productId], references: [id])
+}
+
+model User {
+  id                     Int        @id @default(autoincrement())
+  name                   String
+  email                  String     @unique
+  userName               String?    @unique
+  password               String
+  profileImage           String?
+  coverImage             String?
+  bio                    String?
+  ssn                    String?
+  phoneNumber            String?
+  dateOfBirth            DateTime?
+  gender                 String?
+  address                String?
+  defaultBillingAddress  Int?
+  defaultShippingAddress Int?
+  createdAt              DateTime   @default(now())
+  updatedAt              DateTime   @updatedAt
+  role                   Role       @default(SELLER)
+  userAgentInfo          Json?
+  ipAddress              String?
+  location               Json?
+  // Address                Address[]
+  // cartItems              CartItem[]
+  // orders                 Order[]
+  // reviews                Review[]
+
+  @@map("users")
 }

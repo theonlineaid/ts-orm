@@ -18,6 +18,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # Reference MySQL root password from .env
       MYSQL_DATABASE: ${MYSQL_DATABASE}  # Reference database name from .env
+      MYSQL_USER: user                   # Create a new user if needed
+      MYSQL_PASSWORD: password  
     ports:
       - "3307:3306"
     volumes:

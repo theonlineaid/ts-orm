@@ -21,9 +21,12 @@ npx prisma init
 ## Dependencies setup
 
 ```bash
-npm i morgan cors cookie-parser multer
+npm i morgan cors cookie-parser multer jsonwebtoken dotenv device-detector-js ua-parser-js axios zod nodemailer
 npm i --save-dev @types/cookie-parser
 npm i --save-dev @types/cors
 npm i --save-dev @types/morgan
 npm i --save-dev @types/multer
+npm i --save-dev @types/jsonwebtoken
+npm i --save-dev @types/ua-parser-js
+npm i --save-dev @types/nodemailer
 ```
