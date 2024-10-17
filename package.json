@@ -1,0 +1,47 @@
+{
+  "name": "ts-orm",
+  "version": "1.0.0",
+  "description": "Node.js backend project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon",
+    "build": "npx tsc",
+    "start": "node build/src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theonlineaid/ts-orm.git"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "prisma",
+    "mysql",
+    "multer"
+  ],
+  "author": "Omor faruk (theonlineaid)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theonlineaid/ts-orm/issues"
+  },
+  "homepage": "https://github.com/theonlineaid/ts-orm#readme",
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/multer": "^1.4.12",
+    "@types/node": "^22.7.6",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.21.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "prisma": "^5.21.0"
+  }
+}
